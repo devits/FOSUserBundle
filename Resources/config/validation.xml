@@ -7,13 +7,13 @@
     <class name="FOS\UserBundle\Model\User">
 
         <property name="username">
-            <constraint name="NotBlank">
-                <option name="message">fos_user.username.blank</option>
-                <option name="groups">
-                    <value>Registration</value>
-                    <value>Profile</value>
-                </option>
-            </constraint>
+            <!--<constraint name="NotBlank">-->
+                <!--<option name="message">fos_user.username.blank</option>-->
+                <!--<option name="groups">-->
+                    <!--<value>Registration</value>-->
+                    <!--<value>Profile</value>-->
+                <!--</option>-->
+            <!--</constraint>-->
             <constraint name="Length">
                 <option name="min">2</option>
                 <option name="minMessage">fos_user.username.short</option>
@@ -63,8 +63,8 @@
                 </option>
             </constraint>
             <constraint name="Length">
-                <option name="min">2</option>
-                <option name="max">4096</option>
+                <option name="min">6</option>
+                <option name="max">60</option>
                 <option name="minMessage">fos_user.password.short</option>
                 <option name="groups">
                     <value>Registration</value>
@@ -97,13 +97,13 @@
     <class name="FOS\UserBundle\Propel\User">
 
         <property name="username">
-            <constraint name="NotBlank">
-                <option name="message">fos_user.username.blank</option>
-                <option name="groups">
-                    <value>Registration</value>
-                    <value>Profile</value>
-                </option>
-            </constraint>
+            <!--<constraint name="NotBlank">-->
+                <!--<option name="message">fos_user.username.blank</option>-->
+                <!--<option name="groups">-->
+                    <!--<value>Registration</value>-->
+                    <!--<value>Profile</value>-->
+                <!--</option>-->
+            <!--</constraint>-->
             <constraint name="Length">
                 <option name="min">2</option>
                 <option name="minMessage">fos_user.username.short</option>
