@@ -1,13 +1,19 @@
 Changelog
 =========
 
-### 2.0.0 (2013-XX-XX)
+### 2.0.0 (2014-XX-XX)
 
 * Removed the deprecated UserManager and GroupManager classes for the different Doctrine implementations
 * [BC break] Refactored the structure of controller to dispatch events instead of using form handlers
 * Removed all form handlers
 * [BC break] Changed Datetime properties of default User entity that were nullable to default to null when no value supplied
 * [BC break] Updated schema.xml for Propel BaseUser class to allow nullable and typehint accordingly
+
+### 1.3.4 (2014-06-13)
+
+* Fixed the compatibility with FrameworkBundle 2.5
+* Fixed a few issues in translations
+* Enforce the POST method for the login_check route
 
 ### 1.3.3 (2013-09-23)
 
