@@ -45,7 +45,7 @@ Installation is a quick (I promise!) 7 step process:
 Add FOSUserBundle by running the command:
 
 ``` bash
-$ php composer.phar require friendsofsymfony/user-bundle '~2.0@dev'
+$ php composer.phar require friendsofsymfony/user-bundle "~2.0@dev"
 ```
 
 Composer will install the bundle to your project's `vendor/friendsofsymfony` directory.
@@ -182,6 +182,45 @@ Acme\UserBundle\Entity\User:
             type: integer
             generator:
                 strategy: AUTO
+```
+
+##### xml
+
+If you use xml to configure Doctrine you must add two files. The Entity and the orm.xml:
+
+```php
+<?php
+// src/Acme/UserBundle/Entity/User.php
+
+namespace Acme\UserBundle\Entity;
+
+use FOS\UserBundle\Model\User as BaseUser;
+
+/**
+ * User
+ */
+class User extends BaseUser
+{
+    public function __construct()
+    {
+        parent::__construct();
+        // your own logic
+    }
+}
+```
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<!-- src/Acme/UserBundle/Resources/config/doctrine/User.orm.xml -->
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="Acme\UserBundle\Entity\User" table="fos_user">
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO"/>
+        </id>
+    </entity>
+</doctrine-mapping>
 ```
 
 #### b) MongoDB User class
