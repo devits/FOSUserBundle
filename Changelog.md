@@ -1,8 +1,47 @@
 Changelog
 =========
 
-### 2.0.0 (2014-XX-XX)
+### 2.0.0-beta2 (xxxx-xx-xx)
 
+* Use ceil in `ResettingController` for a better token lifetime approximation
+* Removed unused translation keys
+* Removed form deprecations
+* Added `symfony/templating` as a dependency
+* Use `@`-based Twig syntax for templates
+
+### 2.0.0-beta1 (2016-11-29)
+
+* Dropped Symfony < 2.7 support.
+* Dropped PHP < 5.5 support.
+* Exclude tests from autoloader.
+* Allow to use POST for logout.
+* Fix UserPassword constraint validation groups.
+* Harmonized email detection in `UserManager`.
+* Added unique index for `confirmation_token` field.
+* Added Kyrgyz translation files.
+* Added user manipulator events.
+* Replaced `checkPostAuth` by `checkPreAuth` in `AuthenticationListener`.
+* [BC break] Method `ResettingController::getObfuscatedEmail` has been removed.
+* [BC break] Renamed templates to underscore case.
+* [BC break] Removed `UserManager::refreshUser`.
+* [BC break] Removed `UserManager::loadUserByUsername`.
+* [BC break] Removed `UserManager::supportsClass`.
+* [BC break] Removed unused properties `expired` and `credentialsExpired` including corresponding methods.
+* [BC break] The signature of the `Initializer` constructor has changed.
+* [BC break] The signature of the `LoginManager` constructor has changed.
+* [BC break] The signature of the `UserListener` constructor has changed.
+* [BC break] The signature of the `UserManager` constructor has changed.
+* [BC break] The translation key `resetting.request.invalid_username` has been removed.
+* [BC break] The propel dependency was dropped.
+* [BC break] The `salt` field of the `User` class is now nullable.
+
+### 2.0.0-alpha3 (2015-09-15)
+
+* Reverted the removed of the `expired` and `credentialsExpired` properties as the BC break could lead to corrupted objects being created if server sessions are not cleared when upgrading the bundle.
+
+### 2.0.0-alpha2 (2015-09-15)
+
+* The minimum requirement for Doctrine is now ORM 2.4 and MongoDB ODM 1.0-alpha10.
 * [BC break] The deprecated entity classes have been removed.
 * The minimum requirement for Symfony has been bumped to 2.3 (older versions are already EOLed).
 * [BC break] ``UserInterface::isUser`` has been removed as it was used only by the old validation logic removed a long time ago.
@@ -10,17 +49,40 @@ Changelog
   variable rather than an error message.
 * [BC break] The templating engine configuration has been removed, as well as the related code.
 * [BC break] Changed the XML namespace to `http://friendsofsymfony.github.io/schema/dic/user`
+* [BC break] Added `UserInterface::getId`.
+* [BC break][Reverted] Removed unused properties `expired` and `credentialsExpired` including corresponding methods. This may break code,
+   which makes use of this methods, extending classes, and/or existing installations because of missing mappings for required db fields.
 
 ### 2.0.0-alpha1 (2014-09-26)
 
-* Updated many translations
-* Changed the way to pass the email to the page asking to check the email to avoid issues with non-blocking sessions
-* Changed the fos_user_security_check route to enforce POST
-* Removed the deprecated UserManager and GroupManager classes for the different Doctrine implementations
-* [BC break] Refactored the structure of controller to dispatch events instead of using form handlers
-* Removed all form handlers
-* [BC break] Changed Datetime properties of default User entity that were nullable to default to null when no value supplied
-* [BC break] Updated schema.xml for Propel BaseUser class to allow nullable and typehint accordingly
+* Updated many translations.
+* Changed the way to pass the email to the page asking to check the email to avoid issues with non-blocking sessions.
+* Changed the fos_user_security_check route to enforce POST.
+* Removed the deprecated UserManager and GroupManager classes for the different Doctrine implementations.
+* [BC break] Refactored the structure of controller to dispatch events instead of using form handlers.
+* Removed all form handlers.
+* [BC break] Changed Datetime properties of default User entity that were nullable to default to null when no value supplied.
+* [BC break] Updated schema.xml for Propel BaseUser class to allow nullable and typehint accordingly.
+
+### 1.3.8 (xxxx-xx-xx)
+
+* Fixed invalid `isAccountNonExpired` timestamp when year is 2038
+* Removed any new lines in email subjects
+* Added trailing dot flash messages
+* Added trailing dot validator messages
+* Use `random_bytes` to generate tokens
+
+### 1.3.7 (2016-11-22)
+
+* Fixed some yaml errors in translation files
+* Fixed bad credentials translations
+* Fixed canonicalizer with illegal chars
+* Fixed deprecated routing configuration
+* Fixed class name check in `UserProvider::refreshUser()`
+* Updated several translation files
+* Removed colons from translation files
+* Updated several documentation examples
+* Converted documentation to rst format
 
 ### 1.3.6 (2015-06-01)
 
