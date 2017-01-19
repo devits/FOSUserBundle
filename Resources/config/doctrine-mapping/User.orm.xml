@@ -22,7 +22,6 @@
 
         <field name="lastLogin" column="last_login" type="datetime" nullable="true" />
 
-        <field name="locked" column="locked" type="boolean" />
 
         <field name="expired" column="expired" type="boolean" />
 
